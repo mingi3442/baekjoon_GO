@@ -2,25 +2,14 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 )
 
-func Multiply(num1, num2 float32) float32 {
-	n1 := int(num1)
-	n2 := int(num2)
-	str := strconv.Itoa(n2)
-	arr := strings.Split(str, "")
-
-	for i := 1; len(arr) >= i; i++ {
-		e, _ := strconv.Atoi(arr[len(arr)-i])
-		fmt.Println(float32(e * n1))
-	}
-	return num1 * num2
-}
-
 func main() {
-	// var num1, num2 float32
-	// fmt.Scanln(&num1, &num2)
-	fmt.Println(Multiply(472, 385))
+	var num1, num2 int
+	fmt.Scanf("%d", &num1)
+	fmt.Scanf("%d", &num2)
+	fmt.Println(num1 * (num2 % 10))
+	fmt.Println(num1 * ((num2 / 10) % 10))
+	fmt.Println(num1 * (num2 / 100))
+	fmt.Println(num1 * num2)
 }
