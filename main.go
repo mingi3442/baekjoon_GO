@@ -1,15 +1,16 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	var num1, num2 int
-	fmt.Scanf("%d", &num1)
-	fmt.Scanf("%d", &num2)
-	fmt.Println(num1 * (num2 % 10))
-	fmt.Println(num1 * ((num2 / 10) % 10))
-	fmt.Println(num1 * (num2 / 100))
-	fmt.Println(num1 * num2)
+	var year int
+	fmt.Scanf("%d", &year)
+	// fmt.Println(year)
+	if year%400 == 0 {
+		fmt.Println("1")
+	} else if year%4 == 0 && year%100 != 0 {
+		fmt.Println("1")
+	} else {
+		fmt.Println("0")
+	}
 }
