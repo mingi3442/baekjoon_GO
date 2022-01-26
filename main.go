@@ -3,13 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	var x, y int
-	fmt.Scan(&x, &y)
-	if y-45 >= 0 {
-		fmt.Printf("%d %d\n", x, y-45)
-	} else if x == 0 {
-		fmt.Printf("%d %d\n", 23, 15+y)
+	var hour, min int
+	fmt.Scan(&hour, &min)
+	if min >= 45 {
+		fmt.Printf("%d %d\n", hour, min-45)
 	} else {
-		fmt.Printf("%d %d\n", x-1, 15+y)
+		if hour == 0 {
+			fmt.Printf("%d %d\n", 23, min+15)
+		} else {
+			fmt.Printf("%d %d\n", hour-1, min+15)
+		}
 	}
 }
