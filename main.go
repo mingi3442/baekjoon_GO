@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	var id string
-	fmt.Scanf("%s", &id)
-	fmt.Printf("%s??!\n", id)
+	var year int
+	fmt.Scanf("%d", &year)
+	fmt.Printf("%d\n", year-543)
 }
