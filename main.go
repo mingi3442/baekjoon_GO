@@ -5,7 +5,10 @@ import (
 )
 
 func main() {
-	var year int
-	fmt.Scanf("%d", &year)
-	fmt.Printf("%d\n", year-543)
+	var num int
+	fmt.Scanf("%d", &num)
+	for i := 1; 10 > i; i++ {
+		fmt.Println(num, "*", i, "=", num*i)
+	}
+
 }
