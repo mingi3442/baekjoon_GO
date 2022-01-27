@@ -11,8 +11,10 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
 	fmt.Fscanln(reader, &total)
-	for i := 1; total+1 > i; i++ {
-		fmt.Fprintln(writer, i)
+	var temp int = total
+	for i := 0; total > i; i++ {
+		fmt.Fprintln(writer, temp)
+		temp -= 1
 	}
 	writer.Flush()
 }
