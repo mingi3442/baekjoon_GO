@@ -5,10 +5,12 @@ import (
 )
 
 func main() {
-	var num int
-	fmt.Scanf("%d", &num)
-	for i := 1; 10 > i; i++ {
-		fmt.Println(num, "*", i, "=", num*i)
+	var total int
+	fmt.Scanf("%d", &total)
+	for i := 1; total+1 > i; i++ {
+		var numA, numB int
+		fmt.Scanln(&numA, &numB)
+		fmt.Println(numA + numB)
 	}
 
 }
