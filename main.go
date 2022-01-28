@@ -8,13 +8,13 @@ import (
 
 func main() {
 	var total int
-	var numA, numB int
+	var star string = "*"
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
 	fmt.Fscanln(reader, &total)
-	for i := 1; total+1 > i; i++ {
-		fmt.Fscanln(reader, &numA, &numB)
-		fmt.Fprintf(writer, "Case #%d: %d + %d = %d\n", i, numA, numB, numA+numB)
+	for i := 0; total > i; i++ {
+		fmt.Fprintf(writer, "%s\n", star)
+		star += "*"
 	}
 	writer.Flush()
 }
