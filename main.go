@@ -7,28 +7,26 @@ import (
 )
 
 func main() {
-	var total, flag int
-	var minNum, maxNum int
+	var newNum int
+	idx := 1
+	temp := 1
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
-	fmt.Fscanln(reader, &total, &flag)
-
+	fmt.Fscanln(reader, &newNum)
+	maxNum := newNum
 	defer writer.Flush()
-
-	var numbers = make([]int, total)
-	for i := range numbers {
-		fmt.Fscanf(reader, "%d ", &numbers[i])
-	}
-	minNum = numbers[0]
-	maxNum = numbers[0]
-	for j := range numbers {
-		if numbers[j] > maxNum {
-			maxNum = numbers[j]
-		}
-		if numbers[j] < minNum {
-			minNum = numbers[j]
+	for i := 0; 8 > i; i++ {
+		fmt.Fscanln(reader, &newNum)
+		temp++
+		if maxNum < newNum {
+			maxNum = newNum
+			idx = temp
 		}
 	}
-
-	fmt.Fprintf(writer, "%d %d\n", minNum, maxNum)
+	if maxNum == newNum {
+		idx = 9
+	}
+	// fmt.Println(maxNum)
+	// fmt.Println(idx)
+	fmt.Fprintf(writer, "%d\n%d\n", maxNum, idx)
 }
