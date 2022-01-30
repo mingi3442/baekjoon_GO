@@ -7,30 +7,28 @@ import (
 )
 
 func main() {
-	var number, temp int
-	cycle := 0
+	var total, flag int
+	var minNum, maxNum int
 	reader := bufio.NewReader(os.Stdin)
 	writer := bufio.NewWriter(os.Stdout)
-	fmt.Fscanln(reader, &number)
-	//newN에 입력받은 number 값 넣기
-	var newN = number
+	fmt.Fscanln(reader, &total, &flag)
 
 	defer writer.Flush()
-	for true {
-		//반복될 때 마다 cycle +1
-		cycle++
-		if newN < 10 {
-			//newN이 10보다 작을 경우
-			temp = newN
-		} else {
-			//10보다 클 경우
-			temp = newN/10 + newN%10
+
+	var numbers = make([]int, total)
+	for i := range numbers {
+		fmt.Fscanf(reader, "%d ", &numbers[i])
+	}
+	minNum = numbers[0]
+	maxNum = numbers[0]
+	for j := range numbers {
+		if numbers[j] > maxNum {
+			maxNum = numbers[j]
 		}
-		//다시 newN에 입력
-		newN = newN%10*10 + temp%10
-		if newN == number {
-			break
+		if numbers[j] < minNum {
+			minNum = numbers[j]
 		}
 	}
-	fmt.Fprintln(writer, cycle)
+
+	fmt.Fprintf(writer, "%d %d\n", minNum, maxNum)
 }
