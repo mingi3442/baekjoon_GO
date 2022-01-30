@@ -12,8 +12,8 @@ func main() {
 	writer := bufio.NewWriter(os.Stdout)
 	defer writer.Flush()
 	for true {
-		fmt.Fscanln(reader, &numA, &numB)
-		if numA == 0 && numB == 0 {
+		_, err := fmt.Fscanln(reader, &numA, &numB)
+		if err != nil {
 			break
 		}
 		fmt.Fprintln(writer, numA+numB)
