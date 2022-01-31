@@ -9,7 +9,9 @@ import (
 func main() {
 	var numA, numB, numC int
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Fscanf(reader, "%d\n%d\n%d\n", &numA, &numB, &numC)
+	fmt.Fscanln(reader, &numA)
+	fmt.Fscanln(reader, &numB)
+	fmt.Fscanln(reader, &numC)
 	var result = numA * numB * numC
 	//1~9 숫자를 위해 배열 선언
 	var nums = make([]int, 10)
