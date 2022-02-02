@@ -7,25 +7,23 @@ import (
 )
 
 func main() {
-	var numA, numB, numC int
+	var total int
+	var max int
+	var sum float64
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Fscanln(reader, &numA)
-	fmt.Fscanln(reader, &numB)
-	fmt.Fscanln(reader, &numC)
-	var result = numA * numB * numC
-	//1~9 숫자를 위해 배열 선언
-	var nums = make([]int, 10)
-	for true {
-		//result를 10으로 나눈 나머지랑 같은 값을 갖고 있는 index의 숫자 증가
-		nums[result%10]++
-
-		result = result / 10
-		if result == 0 {
-			break
+	fmt.Fscanln(reader, &total)
+	var scores = make([]int, total)
+	//최고점 찾기
+	for i := 0; total > i; i++ {
+		fmt.Fscanf(reader, "%d ", &scores[i])
+		if max < scores[i] {
+			max = scores[i]
 		}
 	}
-
-	for i := 0; 10 > i; i++ {
-		fmt.Println(nums[i])
+	//모든 점수를  => 점수/최고점 * 100 으로 변환 후 총 점수 sum에 더함
+	for j := 0; total > j; j++ {
+		sum += float64(scores[j]) / float64(max) * 100.0
 	}
+	//새로운 점수를 기준으로 평균
+	fmt.Println(sum / float64(total))
 }
