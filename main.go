@@ -7,23 +7,24 @@ import (
 )
 
 func main() {
-	var total int
-	var max int
-	var sum float64
+
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Fscanln(reader, &total)
-	var scores = make([]int, total)
-	//최고점 찾기
-	for i := 0; total > i; i++ {
-		fmt.Fscanf(reader, "%d ", &scores[i])
-		if max < scores[i] {
-			max = scores[i]
+
+	var numbers = make([]int, 10)
+	var rest []int
+	for i := range numbers {
+		fmt.Fscanf(reader, "%d\n", &numbers[i])
+		var temp = numbers[i] % 42
+		rest = validate(rest, temp)
+	}
+	fmt.Println(len(rest))
+}
+
+func validate(temps []int, temp int) []int {
+	for _, n := range temps {
+		if temp == n {
+			return temps
 		}
 	}
-	//모든 점수를  => 점수/최고점 * 100 으로 변환 후 총 점수 sum에 더함
-	for j := 0; total > j; j++ {
-		sum += float64(scores[j]) / float64(max) * 100.0
-	}
-	//새로운 점수를 기준으로 평균
-	fmt.Println(sum / float64(total))
+	return append(temps, temp)
 }
