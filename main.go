@@ -26,7 +26,7 @@ func main() {
 		}
 		temp[i] = score
 	}
-	fmt.Println(temp)
+	// fmt.Println(temp)
 	for _, e := range temp {
 		fmt.Println(e)
 	}
