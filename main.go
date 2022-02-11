@@ -4,21 +4,18 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
 func main() {
-	var total, sum int
-	var str string
+	var result int
+	result = 0
+	var a, b, c int
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Fscanln(reader, &total)
-	fmt.Fscanf(reader, "%s", &str)
-
-	nums := strings.Split(str, "")
-	for i := 0; total > i; i++ {
-		num, _ := strconv.Atoi(nums[i])
-		sum += num
+	fmt.Fscanln(reader, &a, &b, &c)
+	if b >= c {
+		result = -1
+	} else {
+		result = a/(c-b) + 1
 	}
-	fmt.Println(sum)
+	fmt.Println(result)
 }
