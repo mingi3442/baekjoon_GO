@@ -9,21 +9,27 @@ import (
 func main() {
 	var a, b int
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Fscanf(reader, "%d %d", &a, &b) // a,b를 입력 받는다
-	if a < b {
-		a, b = b, a // 나머지 연산을 하기 위해 b가 a보다 클 경우 자리를 바꿔준다
-	}
-	gcd := 0 // 최대공약수 선언
-	for {
-		r := a % b
-		if r == 0 {
-			//나머지 연산 값이 0일 경우 최대 공약수 값은 0이 되며 반복문은 종료
-			gcd = b
-			break
+	// writer := bufio.NewWriter(os.Stdin)
+	fmt.Fscanf(reader, "%d %d", &a, &b)
+	// defer writer.Flush()
+	r1 := a
+	r2 := b
+	t1 := 0
+	t2 := 1
+	for r2 > 0 {
+		q := r1 / r2
+		r := r1 - q*r2
+		r1, r2 = r2, r
+		t := t1 - q*t2
+		t1, t2 = t2, t
+		r = a % b
+		if r1 != 1 {
+			fmt.Println(0)
 		}
-		// 나머지 연산 값이 0이 아닐 경우  a에는 b를, b에는 나머지 연산 값을 선언해서 반복
-		a = b
-		b = r
+		if t1 < 0 {
+			t1 = a + t1
+		}
 	}
-	fmt.Println(gcd)
+	// fmt.Fprintln(writer, hour, min)
+	fmt.Println(t1)
 }
